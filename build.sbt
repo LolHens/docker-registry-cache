@@ -5,24 +5,22 @@ version := {
     .getOrElse("0.0.1-SNAPSHOT")
 }
 
-scalaVersion := "2.13.5"
+scalaVersion := "3.0.0"
 
 val http4sVersion = "1.0.0-M21"
 
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.3",
-  "de.lolhens" %% "http4s-proxy" % "0.2.1",
-  "io.circe" %% "circe-core" % "0.13.0",
-  "io.circe" %% "circe-generic" % "0.13.0",
-  "io.circe" %% "circe-parser" % "0.13.0",
-  "org.http4s" %% "http4s-blaze-server" % http4sVersion,
-  "org.http4s" %% "http4s-circe" % http4sVersion,
-  "org.http4s" %% "http4s-dsl" % http4sVersion,
-  "org.http4s" %% "http4s-jdk-http-client" % "0.5.0-M4",
+  ("com.typesafe.scala-logging" %% "scala-logging" % "3.9.3").cross(CrossVersion.for3Use2_13),
+  ("de.lolhens" %% "http4s-proxy" % "0.2.1").cross(CrossVersion.for3Use2_13),
+  ("io.circe" %% "circe-core" % "0.13.0").cross(CrossVersion.for3Use2_13),
+  ("io.circe" %% "circe-generic" % "0.13.0").cross(CrossVersion.for3Use2_13),
+  ("io.circe" %% "circe-parser" % "0.13.0").cross(CrossVersion.for3Use2_13),
+  ("org.http4s" %% "http4s-blaze-server" % http4sVersion).cross(CrossVersion.for3Use2_13),
+  ("org.http4s" %% "http4s-circe" % http4sVersion).cross(CrossVersion.for3Use2_13),
+  ("org.http4s" %% "http4s-dsl" % http4sVersion).cross(CrossVersion.for3Use2_13),
+  ("org.http4s" %% "http4s-jdk-http-client" % "0.5.0-M4").cross(CrossVersion.for3Use2_13),
 )
-
-addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1")
 
 Compile / doc / sources := Seq.empty
 
